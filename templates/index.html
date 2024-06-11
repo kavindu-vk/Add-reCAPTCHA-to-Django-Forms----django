@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Form with reCAPTCHA</title>
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: #f0f0f0;
+        }
+
+        .form-container {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .form-container form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-container form .form-field {
+            margin-bottom: 15px;
+        }
+
+        .form-container form input,
+        .form-container form textarea {
+            padding: 10px;
+            border:  1px solid #ccc;
+            border-radius: 5px;
+            width: calc(100% - 22px);
+            font-size: 16px;
+        }
+
+        .form-container form input::placeholder,
+        .form-container form textarea::placeholder {
+            color: #888;
+            font-style: italic;
+        }
+
+        .form-container form button {
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-container form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="form-field">
+                {{ form.name }}
+            </div>
+
+            <div class="form-field">
+                {{ form.email }}
+            </div>
+
+            <div class="form-field">
+                {{ form.message }}
+            </div>
+
+            <div class="form-field">
+                {{ form.captcha }}
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
